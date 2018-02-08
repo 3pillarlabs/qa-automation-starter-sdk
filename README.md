@@ -1,0 +1,1 @@
+# qa-automation-starter-sdk
