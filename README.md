@@ -74,8 +74,7 @@ public class LoginTest {
   @Inject
   private LoginPage loginPage;
 
-  @Test
-  @DataProvider(UserDataProvider.validUsers)
+  @Test(dataProvider = "validUsers")
   public void successfulLogin(Set<User> users) {
     for (User user : users) {
       loginPage.login(user);
@@ -97,11 +96,13 @@ public class LoginTest {
    private DashboardPage dashboard;
 
    // declare the fields
-   @PageElement
+   @PageElement(tag = By.ByName, value = "login.UserName")
    private TextField userName;
-   @PageElement
+
+   @PageElement(tag = By.ByName, value = "login.Password")
    private TextField password;
-   @PageElement
+
+   @PageElement(tag = By.ByTagName, value = "button")
    private Button submit;
 
    public DashboardPage login(User user) {
@@ -117,4 +118,14 @@ public class LoginTest {
    }
  }
 
+ /**
+  * Data provider
+  */
+public class UserDataProvider {
+
+  @DataProvider(name = "validUsers")
+  public static Object[][] validUsers() {
+    // Use the Data framework to fetch valid users
+  }
+}
 ```
