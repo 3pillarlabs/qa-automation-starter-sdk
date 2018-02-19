@@ -1,4 +1,4 @@
-package com.tpg.qas.wsa.main;
+package com.tpg.quality.web.sample;
 
 public class Application {
 

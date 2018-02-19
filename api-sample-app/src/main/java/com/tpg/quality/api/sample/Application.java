@@ -1,4 +1,4 @@
-package com.tpg.qas.api.main;
+package com.tpg.quality.api.sample;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
