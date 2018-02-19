@@ -1,0 +1,7 @@
+// In this section you declare the dependencies for your production and test code
+dependencies {
+   	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+	compile group: 'io.appium', name: 'java-client', version: '5.0.4'
+    
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.7'
+}

@@ -1,0 +1,11 @@
+// Including all modules
+include 'common'
+include 'api'
+include 'api-sample-app'
+include 'mobile'
+include 'mobile-sample-app'
+include 'web'
+include 'web-sample-app'
+
+
+rootProject.name = 'qa-automation-starter-sdk'
