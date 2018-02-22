@@ -22,6 +22,9 @@ subprojects {
 
         //Needed to help with injections for TestNG listeners
         compile("com.google.inject:guice:3.0")
+		
+		// TestNG for compile
+        compile group: 'org.testng', name: 'testng', version: '6.9.+'
 
         //Adding a + for a version number means get the latest number for that version.  So in this case get the latest 6.9.whatever deployment
         testCompile group: 'org.testng', name: 'testng', version: '6.9.+'
