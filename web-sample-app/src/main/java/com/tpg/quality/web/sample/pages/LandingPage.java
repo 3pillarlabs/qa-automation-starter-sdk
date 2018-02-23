@@ -1,10 +1,19 @@
 package com.tpg.quality.web.sample.pages;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.tpg.quality.web.sample.or.HomePageObjects;
 import com.tpg.quality.web.sample.or.LandingPageObjects;
 import com.tpg.quality.web.utility.InitDriver;
 
+@Component
+@Scope("prototype")
 public class LandingPage extends InitDriver {
+	
+	public void printMyStatement(){
+		System.out.println("#### printing my statement");
+	}
 
 //	static Logger logger = Logger.getLogger(LandingPage.class);
 
