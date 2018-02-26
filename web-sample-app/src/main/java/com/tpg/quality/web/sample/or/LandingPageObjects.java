@@ -2,22 +2,28 @@ package com.tpg.quality.web.sample.or;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import com.tpg.quality.web.utility.CustomElementLocatorFactory;
+import com.tpg.quality.web.utility.CustomFindBy;
+/**
+ * 
+ * @author satnam.malhotra
+ *
+ */
 public class LandingPageObjects {
 
 	public LandingPageObjects(WebDriver driver) {
-		PageFactory.initElements(driver, this);
+		CustomElementLocatorFactory annotation = new CustomElementLocatorFactory(driver);
+		PageFactory.initElements(annotation, this);
 	}
 
-	@FindBy(id = "txtUsername")
+	@CustomFindBy(tag = "id", value = "txtUsername")
 	public static WebElement username;
 
-	@FindBy(id = "txtPassword")
+	@CustomFindBy(tag = "id", value = "txtPassword")
 	public static WebElement password;
 
-	@FindBy(id = "btnLogin")
+	@CustomFindBy(tag = "id", value = "btnLogin")
 	public static WebElement login;
 
 }

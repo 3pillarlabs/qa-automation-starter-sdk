@@ -14,7 +14,11 @@ import org.testng.ITestResult;
 import org.testng.internal.IResultListener;
 import org.testng.xml.XmlSuite;
 //import com.codepine.api.testrail.TestRailException;
-
+/**
+ * 
+ * @author satnam.malhotra
+ *
+ */
 public class TestReports extends MainClass implements IResultListener, IReporter {
 
 //	static Logger log = Logger.getLogger(TestReports.class);

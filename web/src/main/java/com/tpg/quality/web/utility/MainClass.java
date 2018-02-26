@@ -16,7 +16,11 @@ import org.testng.annotations.Parameters;
 //import com.codepine.api.testrail.model.Result;
 //import com.codepine.api.testrail.model.ResultField;
 //import com.codepine.api.testrail.model.Run;
-
+/**
+ * 
+ * @author satnam.malhotra
+ *
+ */
 public class MainClass extends InitDriver {
 
 //	protected static TestRail testrail;
