@@ -1,3 +1,17 @@
 language: java
+
 jdk:
   - oraclejdk8
+  
+addons:
+ sonarcloud:
+  organization: "sayantam-github"
+  token:
+   secure: "GJMaVRQxvAsnZfuOubaycp9faIMa8LVelkmzDorj0THHsazE2ASQvqDuIEC6oAk2dDxUnx8CBWy4SS2AKtmvFb8mpT8A6Ta3NtxAbnP1mAmvzS4mzYXtVfPykDnBKRMAup1iEbB/dI9N8tN3HpjGuNFsCSlsJeRC4Zit9cU/K93B6SbO8qfSjrb/EiUvxH64fhEhG5mAiB5kgS6ixWLwh3dQlGI6DFQxI/gUGDr1F6d7bKCn0zmgEw5053hEktfRzy2GKIIUDV/xusHJ0IyPZatK1wnDVICsEsJ1KbbbeLZWrTQMbgIkO+0ZSyJWPD8R9aBaUuNMu1TZM5Ou4i+4PmUiSrj8+fSpZ1Iycyx+rd15rrFtGeSL4nQQ9PYDumtDH6uH6if8OBekQNsnOzxLrjW0rQl7QZnIYRBH9AwUs5azN2j1sxOCDq79d0QvANwrEt15YWaenawO7Z5nklOuNdgWs7df2dgSxpjgD7LwN8n+ZpBVDi33Gox15cB0H2kgQHL/AaqFICjW/YQC0mXf/pB5acGYfBZsQQVaWiBkh2GRET4SyDgLqnGS9O/IYe3ZdNzIBqT2MSApdTvpJ8dR/p57at0/nGeBRkuj9c4SyvGNeOxc9ZknJIBglShprEYYh1pV0foG+2Zmyh4tTdY9Mdt2GcNhUp6yq8DbjJScXQc="
+  branches:
+   - master
+   - develop
+   - feature/ci-codequality
+
+script:
+  - sonar-scanner
