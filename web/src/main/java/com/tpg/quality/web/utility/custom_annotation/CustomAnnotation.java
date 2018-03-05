@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility;
+package com.tpg.quality.web.utility.custom_annotation;
 
 import java.lang.reflect.Field;
 import org.openqa.selenium.By;
@@ -21,8 +21,8 @@ public class CustomAnnotation extends AbstractAnnotations {
 
 	@Override
 	public By buildBy() {
-		CustomFindBy findBy = field.getAnnotation(CustomFindBy.class);
-		Preconditions.checkArgument(findBy != null, "Could not locate @CustomFindBy annotation");
+		FindBy findBy = field.getAnnotation(FindBy.class);
+		Preconditions.checkArgument(findBy != null, "Could not locate @FindBy annotation");
 		String value = findBy.value();
 		String tagName = findBy.tag();
 		switch (tagName) {

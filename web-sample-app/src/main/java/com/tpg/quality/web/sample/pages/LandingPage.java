@@ -17,10 +17,10 @@ public class LandingPage extends InitDriver {
 
 //	static Logger logger = Logger.getLogger(LandingPage.class);
 
-	public static LandingPageObjects openLandingPage(String url) {
+	public static void openLandingPage(String url) {
 		getDriver().get(url);
 //		logger.info("Opened the link " + url);
-		return new LandingPageObjects(getDriver());
+		LandingPageObjects.initElements(getDriver());
 	}
 
 	public static void enterUserName() {

@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility;
+package com.tpg.quality.web.utility.custom_annotation;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -49,4 +49,18 @@ public class CustomElementLocator implements ElementLocator {
 		return elements;
 
 	}
+	
+//	/**
+//	   * Returns whether the element should be cached.
+//	   *
+//	   * @return {@code true} if the element should be cached
+//	   */
+//	  protected boolean shouldCache() {
+//	    return elementFromCache;
+//	  }
+//
+//	  @Override
+//	  public String toString() {
+//	    return this.getClass().getSimpleName() + " '" + by + "'";
+//	  }
 }

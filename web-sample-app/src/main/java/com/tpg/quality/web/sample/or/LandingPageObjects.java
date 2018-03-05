@@ -1,10 +1,11 @@
 package com.tpg.quality.web.sample.or;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import com.tpg.quality.web.utility.CustomElementLocatorFactory;
-import com.tpg.quality.web.utility.CustomFindBy;
+
+import com.tpg.quality.web.utility.custom_annotation.FindBy;
+import com.tpg.quality.web.utility.custom_pagefactory.CustomPageFactory;
+import com.tpg.quality.web.utility.custom_webelements.Button;
+import com.tpg.quality.web.utility.custom_webelements.TextField;
 /**
  * 
  * @author satnam.malhotra
@@ -12,18 +13,17 @@ import com.tpg.quality.web.utility.CustomFindBy;
  */
 public class LandingPageObjects {
 
-	public LandingPageObjects(WebDriver driver) {
-		CustomElementLocatorFactory annotation = new CustomElementLocatorFactory(driver);
-		PageFactory.initElements(annotation, this);
+	public static LandingPageObjects initElements(WebDriver driver) {
+		return CustomPageFactory.initElements(driver, LandingPageObjects.class);
 	}
 
-	@CustomFindBy(tag = "id", value = "txtUsername")
-	public static WebElement username;
+	@FindBy(tag = "id", value = "txtUsername")
+	public static TextField username;
 
-	@CustomFindBy(tag = "id", value = "txtPassword")
-	public static WebElement password;
+	@FindBy(tag = "id", value = "txtPassword")
+	public static TextField password;
 
-	@CustomFindBy(tag = "id", value = "btnLogin")
-	public static WebElement login;
+	@FindBy(tag = "id", value = "btnLogin")
+	public static Button login;
 
 }
