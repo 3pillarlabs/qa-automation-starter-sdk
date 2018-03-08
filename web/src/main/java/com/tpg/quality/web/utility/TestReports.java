@@ -19,7 +19,7 @@ import org.testng.xml.XmlSuite;
  * @author satnam.malhotra
  *
  */
-public class TestReports extends MainClass implements IResultListener, IReporter {
+public class TestReports  implements IResultListener, IReporter {
 
 //	static Logger log = Logger.getLogger(TestReports.class);
 	Boolean update_result = false;

@@ -11,8 +11,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ImplementedBy {
-    /**
-     * Passing class as default, that is implementing our custom element interface.
-     */
-    Class<?> value() default CustomElementImpl.class;
+	/**
+	 * Passing class as default, that is implementing our custom element
+	 * interface.
+	 */
+	Class<?> value() default CustomElementImpl.class;
 }

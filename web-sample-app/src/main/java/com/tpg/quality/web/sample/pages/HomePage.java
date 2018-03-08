@@ -1,29 +1,45 @@
 package com.tpg.quality.web.sample.pages;
 
+import javax.inject.Inject;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.springframework.stereotype.Component;
 import org.testng.Assert;
-
 import com.tpg.quality.web.sample.or.HomePageObjects;
-import com.tpg.quality.web.utility.InitDriver;
+import com.tpg.quality.web.utility.custom_driver.Webdriver;
 
-public class HomePage extends InitDriver {
+@Component
+public class HomePage {
 
-//	static Logger logger = Logger.getLogger(HomePage.class);
+	// static Logger logger = Logger.getLogger(HomePage.class);
+	@Inject
+	private Webdriver driverobj;
 
-	public static void verifyHomePage() {
-		Assert.assertTrue(HomePageObjects.welcome_button.isDisplayed(), "Could not login successfully");
-//		logger.info("Verified welcome button on the homepage");
+	@Inject
+	private HomePageObjects homePageObj;
+
+	HomePageObjects homePageElements;
+
+	public void verifyHomePage() {
+		homePageElements = homePageObj.initElements(driverobj.getDriver());
+		Assert.assertTrue(homePageElements.welcome_button.isDisplayed(), "Could not login successfully");
+		// logger.info("Verified welcome button on the homepage");
 	}
 
-	public static void clickWelcome() {
-		HomePageObjects.welcome_button.click();
-//		logger.info("Clicked on welcome button");
+	public void clickWelcome() {
+		if (homePageElements == null) {
+			homePageElements = homePageObj.initElements(driverobj.getDriver());
+		}
+		driverobj.wait.until(ExpectedConditions.visibilityOf(homePageElements.welcome_button));
+		homePageElements.welcome_button.click();
+		// logger.info("Clicked on welcome button");
 	}
 
-	public static void clickLogout() {
-		wait.until(ExpectedConditions.visibilityOf(HomePageObjects.logout));
-		HomePageObjects.logout.click();
-//		logger.info("Clicked on logout button");
+	public void clickLogout() {
+		if (homePageElements == null) {
+			homePageElements = homePageObj.initElements(driverobj.getDriver());
+		}
+		driverobj.wait.until(ExpectedConditions.elementToBeClickable(homePageElements.logout));
+		homePageElements.logout.click();
+		// logger.info("Clicked on logout button");
 	}
-
 }

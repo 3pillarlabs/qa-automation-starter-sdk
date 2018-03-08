@@ -1,25 +1,21 @@
 package com.tpg.quality.web.sample.or;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-
-import com.tpg.quality.web.utility.custom_annotation.CustomElementLocatorFactory;
+import org.springframework.stereotype.Component;
 import com.tpg.quality.web.utility.custom_annotation.FindBy;
-/**
- * 
- * @author satnam.malhotra
- *
- */
+import com.tpg.quality.web.utility.custom_pagefactory.CustomPageFactory;
+import com.tpg.quality.web.utility.custom_webelements.Button;
+
+@Component
 public class HomePageObjects {
-	public HomePageObjects(WebDriver driver) {
-		CustomElementLocatorFactory annotation = new CustomElementLocatorFactory(driver);
-		PageFactory.initElements(annotation, this);
+
+	public HomePageObjects initElements(WebDriver driver) {
+		return CustomPageFactory.initElements(driver, HomePageObjects.class);
 	}
 
 	@FindBy(tag = "id", value = "welcome")
-	public static WebElement welcome_button;
+	public Button welcome_button;
 
 	@FindBy(tag = "xpath", value = "//a[contains(.,'Logout')]")
-	public static WebElement logout;
+	public Button logout;
 }

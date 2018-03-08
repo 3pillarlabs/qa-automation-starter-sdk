@@ -1,42 +1,49 @@
 package com.tpg.quality.web.sample.pages;
 
-import org.springframework.context.annotation.Scope;
+import javax.inject.Inject;
 import org.springframework.stereotype.Component;
-
-import com.tpg.quality.web.sample.or.HomePageObjects;
 import com.tpg.quality.web.sample.or.LandingPageObjects;
-import com.tpg.quality.web.utility.InitDriver;
+import com.tpg.quality.web.utility.custom_driver.Webdriver;
 
 @Component
-@Scope("prototype")
-public class LandingPage extends InitDriver {
-	
-	public void printMyStatement(){
-		System.out.println("#### printing my statement");
+public class LandingPage {
+	@Inject
+	private Webdriver driverobj;
+	@Inject
+	private LandingPageObjects landingPageObj;
+
+	LandingPageObjects landingPageElements;
+	// static Logger logger = Logger.getLogger(LandingPage.class);
+
+	public void openLandingPage(String url) {
+		driverobj.getDriver().get(url);
+		// logger.info("Opened the link " + url);
+		if (landingPageElements == null) {
+			landingPageElements = landingPageObj.initElements(driverobj.getDriver());
+		}
 	}
 
-//	static Logger logger = Logger.getLogger(LandingPage.class);
-
-	public static void openLandingPage(String url) {
-		getDriver().get(url);
-//		logger.info("Opened the link " + url);
-		LandingPageObjects.initElements(getDriver());
+	public void enterUserName() {
+		if (landingPageElements == null) {
+			landingPageElements = landingPageObj.initElements(driverobj.getDriver());
+		}
+		landingPageElements.username.setText("Admin");
+		// logger.info("Entered username");
 	}
 
-	public static void enterUserName() {
-		LandingPageObjects.username.sendKeys("Admin");
-//		logger.info("Entered username");
+	public void enterPassword() {
+		if (landingPageElements == null) {
+			landingPageElements = landingPageObj.initElements(driverobj.getDriver());
+		}
+		landingPageElements.password.setText("admin");
+		// logger.info("Entered password");
 	}
 
-	public static void enterPassword() {
-		LandingPageObjects.password.sendKeys("admin");
-//		logger.info("Entered password");
+	public void clickLogin() {
+		if (landingPageElements == null) {
+			landingPageElements = landingPageObj.initElements(driverobj.getDriver());
+		}
+		landingPageElements.login.click();
+		// logger.info("Clicked login");
 	}
-
-	public static HomePageObjects clickLogin() {
-		LandingPageObjects.login.click();
-//		logger.info("Clicked login");
-		return new HomePageObjects(getDriver());
-	}
-
 }

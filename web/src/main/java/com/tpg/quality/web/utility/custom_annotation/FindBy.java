@@ -4,6 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
 /**
  * 
  * @author satnam.malhotra
@@ -13,6 +14,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface FindBy {
 	String value() default "";
-
 	String tag() default "";
 }

@@ -52,7 +52,6 @@ public class CustomFieldDecorator implements FieldDecorator {
 			fieldType = CustomElement.class;
 		}
 
-		// if (WebElement.class.isAssignableFrom(field.getType())) {
 		if (WebElement.class.isAssignableFrom(fieldType)) {
 			return proxyForLocator(loader, fieldType, locator);
 		} else if (List.class.isAssignableFrom(field.getType())) {

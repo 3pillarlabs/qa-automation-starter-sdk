@@ -6,6 +6,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.AbstractAnnotations;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
+
 /**
  * 
  * @author satnam.malhotra
@@ -49,18 +50,4 @@ public class CustomElementLocator implements ElementLocator {
 		return elements;
 
 	}
-	
-//	/**
-//	   * Returns whether the element should be cached.
-//	   *
-//	   * @return {@code true} if the element should be cached
-//	   */
-//	  protected boolean shouldCache() {
-//	    return elementFromCache;
-//	  }
-//
-//	  @Override
-//	  public String toString() {
-//	    return this.getClass().getSimpleName() + " '" + by + "'";
-//	  }
 }
