@@ -19,12 +19,18 @@ public class LandingPageObjects {
 		return CustomPageFactory.initElements(driver, LandingPageObjects.class);
 	}
 
-	@FindBy(tag = "id", value = "txtUsername")
-	public TextField username;
+	@FindBy(tag = "xpath", value = "//a[contains(text(),'PSF')]")
+	public Button psf;
 
-	@FindBy(tag = "id", value = "txtPassword")
+	@FindBy(tag = "xpath", value = "(//a[contains(.,'Sign In')])[1]")
+	public Button usersignIn;
+
+	@FindBy(tag = "id", value = "id_login")
+	public TextField login;
+	
+	@FindBy(tag = "id", value = "id_password")
 	public TextField password;
-
-	@FindBy(tag = "id", value = "btnLogin")
-	public Button login;
+	
+	@FindBy(tag = "xpath", value = "(//button[contains(.,'Sign In')])")
+	public Button signIn;
 }

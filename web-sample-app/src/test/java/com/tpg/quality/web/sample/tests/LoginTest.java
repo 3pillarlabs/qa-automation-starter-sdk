@@ -13,22 +13,32 @@ public class LoginTest extends BaseTest {
 	@Inject
 	private HomePage homePageobj;
 
-	@Test(description = "Login to orange HRM and verify")
+	@Test(description = "Login to python site ")
 	public void verifyLogin() {
-		landingPageobj.openLandingPage("http://opensource.demo.orangehrmlive.com/");
-		landingPageobj.enterUserName();
-		landingPageobj.enterPassword();
-		landingPageobj.clickLogin();
-		homePageobj.verifyHomePage();
+		landingPageobj.openLandingPage("http://www.python.org/");
+		landingPageobj.clickPSF();
+		landingPageobj.userSignIn();
+		landingPageobj.enterUsername("internal_project");
+		landingPageobj.enterPassword("3pillar@123");
+		landingPageobj.signIn();
+		//homePageobj.verifyHomePage();
 	}
 
-	@Test(description = "Login to orange HRM, logout and verify")
-	public void verifyLogout() throws InterruptedException {
-		landingPageobj.openLandingPage("http://opensource.demo.orangehrmlive.com/");
-		landingPageobj.enterUserName();
-		landingPageobj.enterPassword();
-		landingPageobj.clickLogin();
-		homePageobj.clickWelcome();
-		homePageobj.clickLogout();
+	@Test(description = "Logout from python site")
+	public void verifyLogout() throws InterruptedException  {
+		landingPageobj.openLandingPage("http://www.python.org/");
+		landingPageobj.clickPSF();
+		landingPageobj.userSignIn();
+		landingPageobj.enterUsername("internal_project");
+		landingPageobj.enterPassword("3pillar@123");
+		landingPageobj.signIn();
+		homePageobj.signOut();
+		
 	}
+	
+	
+	
+	
+		
+	
 }

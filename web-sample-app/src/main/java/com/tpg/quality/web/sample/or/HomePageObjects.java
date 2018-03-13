@@ -13,9 +13,12 @@ public class HomePageObjects {
 		return CustomPageFactory.initElements(driver, HomePageObjects.class);
 	}
 
-	@FindBy(tag = "id", value = "welcome")
-	public Button welcome_button;
-
-	@FindBy(tag = "xpath", value = "//a[contains(.,'Logout')]")
-	public Button logout;
+	@FindBy(tag = "xpath", value = "//a[contains(.,'Sign out')]")
+	public Button signOut;
+	
+	@FindBy(tag = "xpath", value = "//button[contains(text(),'Sign Out')]")
+	public Button signOutButton;
+	
+	@FindBy(tag = "xpath", value = "//a[contains(text(),'Your account')]")
+	public Button yourAcc;
 }

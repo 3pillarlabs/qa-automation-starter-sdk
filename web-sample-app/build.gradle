@@ -8,5 +8,5 @@ dependencies {
     // Common Code Dependency
     compile project(':common')
     compile project(':web')
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.11.0'
 }

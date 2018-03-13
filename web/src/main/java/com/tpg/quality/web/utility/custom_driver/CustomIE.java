@@ -2,6 +2,7 @@ package com.tpg.quality.web.utility.custom_driver;
 
 import java.lang.reflect.Proxy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.stereotype.Component;
 import com.tpg.quality.web.utility.MyInvocationHandler;
 
@@ -12,6 +13,7 @@ public class CustomIE {
 
 	public WebDriver getIEDriver() {
 		System.setProperty("webdriver.ie.driver", location + "\\resources\\iedriver.exe");
+		driver = new InternetExplorerDriver();
 		driver = (WebDriver) Proxy.newProxyInstance(WebDriver.class.getClassLoader(), new Class[] { WebDriver.class },
 				new MyInvocationHandler(driver));
 		return driver;

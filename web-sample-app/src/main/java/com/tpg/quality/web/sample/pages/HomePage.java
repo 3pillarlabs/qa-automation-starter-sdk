@@ -1,9 +1,10 @@
 package com.tpg.quality.web.sample.pages;
 
 import javax.inject.Inject;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Component;
-import org.testng.Assert;
+
 import com.tpg.quality.web.sample.or.HomePageObjects;
 import com.tpg.quality.web.utility.custom_driver.Webdriver;
 
@@ -20,26 +21,23 @@ public class HomePage {
 	HomePageObjects homePageElements;
 
 	public void verifyHomePage() {
+		homePageElements = null;
 		homePageElements = homePageObj.initElements(driverobj.getDriver());
-		Assert.assertTrue(homePageElements.welcome_button.isDisplayed(), "Could not login successfully");
+		//Assert.assertTrue(homePageElements.welcome_button.isDisplayed(), "Could not login successfully");
 		// logger.info("Verified welcome button on the homepage");
 	}
 
-	public void clickWelcome() {
+	
+	
+	public void signOut() throws InterruptedException {
 		if (homePageElements == null) {
 			homePageElements = homePageObj.initElements(driverobj.getDriver());
 		}
-		driverobj.wait.until(ExpectedConditions.visibilityOf(homePageElements.welcome_button));
-		homePageElements.welcome_button.click();
-		// logger.info("Clicked on welcome button");
+		Actions action = new Actions(driverobj.getDriver());
+        action.moveToElement(homePageElements.yourAcc).build().perform();
+        homePageElements.signOut.click();
+        homePageElements.signOutButton.click();
 	}
-
-	public void clickLogout() {
-		if (homePageElements == null) {
-			homePageElements = homePageObj.initElements(driverobj.getDriver());
-		}
-		driverobj.wait.until(ExpectedConditions.elementToBeClickable(homePageElements.logout));
-		homePageElements.logout.click();
-		// logger.info("Clicked on logout button");
-	}
+	
 }
+

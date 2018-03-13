@@ -1,7 +1,9 @@
 package com.tpg.quality.web.utility.custom_driver;
 
 import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Component;
@@ -22,7 +24,7 @@ public class Webdriver {
 	public WebDriverWait wait;
 
 	public WebDriver getDriver() {
-		if (driver == null) {
+		if (ThDriver.get() == null) {
 			switch (browser) {
 			case "firefox":
 				driver = firefox_driver.getFirefoxDriver();
@@ -35,10 +37,11 @@ public class Webdriver {
 				break;
 			}
 			ThDriver.set(driver);
-			ThDriver.get().manage().window().fullscreen();
+			//ThDriver.get().manage().window().fullscreen();
 			ThDriver.get().manage().deleteAllCookies();
 			ThDriver.get().manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
-			wait = new WebDriverWait(ThDriver.get(), 30);
+			wait = new WebDriverWait(ThDriver.get(), 60);
+			
 		}
 		return ThDriver.get();
 	}
@@ -47,5 +50,7 @@ public class Webdriver {
 		ThDriver.get().quit();
 		ThDriver.set(null);
 	}
+
+	
 
 }
