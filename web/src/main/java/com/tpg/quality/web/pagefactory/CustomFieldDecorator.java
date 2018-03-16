@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_pagefactory;
+package com.tpg.quality.web.pagefactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
@@ -12,10 +12,11 @@ import org.openqa.selenium.internal.WrapsElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
-import com.tpg.quality.web.utility.custom_annotation.CustomElementLocator;
-import com.tpg.quality.web.utility.custom_annotation.CustomElementLocatorFactory;
-import com.tpg.quality.web.utility.custom_annotation.FindBy;
-import com.tpg.quality.web.utility.custom_webelements.CustomElement;
+
+import com.tpg.quality.web.annotation.CustomElementLocator;
+import com.tpg.quality.web.annotation.CustomElementLocatorFactory;
+import com.tpg.quality.web.annotation.FindBy;
+import com.tpg.quality.web.webelements.CustomElement;
 
 /**
  * CustomFieldDecorator implements the default FieldDecorator and overrides the

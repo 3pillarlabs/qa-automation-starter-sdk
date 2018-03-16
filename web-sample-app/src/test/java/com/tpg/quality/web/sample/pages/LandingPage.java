@@ -12,8 +12,8 @@ import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.interactions.internal.Locatable;
 import org.springframework.stereotype.Component;
 
+import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.or.LandingPageObjects;
-import com.tpg.quality.web.utility.custom_driver.Webdriver;
 
 @Component
 public class LandingPage {

@@ -20,7 +20,8 @@ import org.testng.annotations.Parameters;
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
-import com.tpg.quality.web.utility.custom_driver.Webdriver;
+
+import com.tpg.quality.web.driver.Webdriver;
 
 @ComponentScan(basePackages = "com.tpg")
 @SpringBootApplication

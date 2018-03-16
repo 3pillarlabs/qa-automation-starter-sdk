@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_webelements;
+package com.tpg.quality.web.webelements;
 
 @ImplementedBy(ButtonImpl.class)
 public interface Button extends CustomElement {

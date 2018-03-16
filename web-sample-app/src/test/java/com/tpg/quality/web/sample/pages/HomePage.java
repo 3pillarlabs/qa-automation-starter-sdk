@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Component;
 
+import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.or.HomePageObjects;
-import com.tpg.quality.web.utility.custom_driver.Webdriver;
 
 @Component
 public class HomePage {

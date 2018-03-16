@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_webelements;
+package com.tpg.quality.web.webelements;
 
 import java.util.List;
 import org.openqa.selenium.By;

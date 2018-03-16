@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_annotation;
+package com.tpg.quality.web.annotation;
 
 import java.util.List;
 import org.openqa.selenium.By;

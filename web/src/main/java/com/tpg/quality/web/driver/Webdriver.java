@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_driver;
+package com.tpg.quality.web.driver;
 
 import java.util.concurrent.TimeUnit;
 

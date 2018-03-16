@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_pagefactory;
+package com.tpg.quality.web.pagefactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
@@ -8,9 +8,9 @@ import java.lang.reflect.Method;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-import com.tpg.quality.web.utility.custom_annotation.CustomElementLocator;
-import com.tpg.quality.web.utility.custom_webelements.CustomElement;
-import com.tpg.quality.web.utility.custom_webelements.ImplementedBy;
+import com.tpg.quality.web.annotation.CustomElementLocator;
+import com.tpg.quality.web.webelements.CustomElement;
+import com.tpg.quality.web.webelements.ImplementedBy;
 
 public class CustomLocatingElementHandler implements InvocationHandler {
 	// Changed the locator type from ElementLocator to CustomElementLocator

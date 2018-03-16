@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_annotation;
+package com.tpg.quality.web.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

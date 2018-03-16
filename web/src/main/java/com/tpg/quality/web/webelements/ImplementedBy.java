@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_webelements;
+package com.tpg.quality.web.webelements;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

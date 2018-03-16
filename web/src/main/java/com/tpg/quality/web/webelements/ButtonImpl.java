@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_webelements;
+package com.tpg.quality.web.webelements;
 
 import org.openqa.selenium.ElementNotSelectableException;
 import org.openqa.selenium.ElementNotVisibleException;

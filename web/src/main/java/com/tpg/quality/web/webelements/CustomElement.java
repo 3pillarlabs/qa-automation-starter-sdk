@@ -1,4 +1,4 @@
-package com.tpg.quality.web.utility.custom_webelements;
+package com.tpg.quality.web.webelements;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.internal.Locatable;
