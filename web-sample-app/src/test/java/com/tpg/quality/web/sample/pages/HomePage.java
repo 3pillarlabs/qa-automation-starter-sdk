@@ -1,10 +1,8 @@
 package com.tpg.quality.web.sample.pages;
 
 import javax.inject.Inject;
-
 import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Component;
-
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.or.HomePageObjects;
 

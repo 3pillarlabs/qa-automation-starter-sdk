@@ -1,11 +1,8 @@
 package com.tpg.quality.web.driver;
 
-import java.lang.reflect.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.stereotype.Component;
-import com.tpg.quality.web.utility.MyInvocationHandler;
 
 @Component
 public class CustomChrome {

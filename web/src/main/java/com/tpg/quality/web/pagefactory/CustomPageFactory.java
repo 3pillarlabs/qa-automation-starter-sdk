@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.tpg.quality.web.annotation.CustomElementLocatorFactory;
 
 public class CustomPageFactory extends PageFactory {

@@ -12,7 +12,6 @@ import org.openqa.selenium.internal.WrapsElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
-
 import com.tpg.quality.web.annotation.CustomElementLocator;
 import com.tpg.quality.web.annotation.CustomElementLocatorFactory;
 import com.tpg.quality.web.annotation.FindBy;

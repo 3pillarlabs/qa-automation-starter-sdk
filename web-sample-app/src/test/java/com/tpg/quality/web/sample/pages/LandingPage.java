@@ -1,17 +1,7 @@
 package com.tpg.quality.web.sample.pages;
 
 import javax.inject.Inject;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.HasInputDevices;
-import org.openqa.selenium.interactions.Mouse;
-import org.openqa.selenium.interactions.internal.Locatable;
 import org.springframework.stereotype.Component;
-
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.or.LandingPageObjects;
 
