@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import org.testng.IReporter;
 import org.testng.IResultMap;
 import org.testng.ISuite;
@@ -21,52 +22,52 @@ import org.testng.xml.XmlSuite;
  */
 public class TestReports  implements IResultListener, IReporter {
 
-//	static Logger log = Logger.getLogger(TestReports.class);
+	//	static Logger log = Logger.getLogger(TestReports.class);
 	Boolean update_result = false;
 
 	@Override
 	public void onTestStart(ITestResult result) {
-//		log.info("Started execution of the test " + result.getMethod().getMethodName());
+		//		log.info("Started execution of the test " + result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-//		log.info("Successfully executed " + result.getMethod().getMethodName());
-//		log.info("=======================================================\n");
-//		if (update_result) {
-//			int[] Id = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(TestData.class).testId();
-//			for (int id : Id) {
-//				try {
-//					addTestResults(id, 1);
-//
-//				} catch (TestRailException ex) {
-//					log.info("Could not update the test result " + ex);
-//				}
-//			}
-//		}
+		//		log.info("Successfully executed " + result.getMethod().getMethodName());
+		//		log.info("=======================================================\n");
+		//		if (update_result) {
+		//			int[] Id = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(TestData.class).testId();
+		//			for (int id : Id) {
+		//				try {
+		//					addTestResults(id, 1);
+		//
+		//				} catch (TestRailException ex) {
+		//					log.info("Could not update the test result " + ex);
+		//				}
+		//			}
+		//		}
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-//		log.info(result.getMethod().getMethodName() + " test failed");
-//		log.info("=======================================================\n");
-//		if (update_result) {
-//			int[] Id = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(TestData.class).testId();
-//			for (int id : Id) {
-//				try {
-//					addTestResults(id, 5);
-//
-//				} catch (TestRailException ex) {
-//					log.info("Could not update the test result " + ex);
-//				}
-//			}
-//		}
+		//		log.info(result.getMethod().getMethodName() + " test failed");
+		//		log.info("=======================================================\n");
+		//		if (update_result) {
+		//			int[] Id = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(TestData.class).testId();
+		//			for (int id : Id) {
+		//				try {
+		//					addTestResults(id, 5);
+		//
+		//				} catch (TestRailException ex) {
+		//					log.info("Could not update the test result " + ex);
+		//				}
+		//			}
+		//		}
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-//		log.info("Skipped " + result.getMethod().getMethodName());
-//		log.info("=======================================================\n");
+		//		log.info("Skipped " + result.getMethod().getMethodName());
+		//		log.info("=======================================================\n");
 	}
 
 	@Override

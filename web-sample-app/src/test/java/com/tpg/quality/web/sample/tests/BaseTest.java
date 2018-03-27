@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.inject.Inject;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.WebApplicationType;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.TestNG;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.xml.XmlClass;
@@ -24,16 +23,12 @@ import com.tpg.quality.web.driver.Webdriver;
 
 @ComponentScan(basePackages = "com.tpg")
 @SpringBootApplication
-public class BaseTest extends AbstractTestNGSpringContextTests implements CommandLineRunner {
+public class BaseTest extends AbstractTestNGSpringContextTests  {
 	@Inject
 	private Webdriver driver;
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(BaseTest.class).web(WebApplicationType.NONE).run(args);
-	}
 
-	@Override
-	public void run(String... args) throws Exception {
 		XmlSuite suite = new XmlSuite();
 		suite.setName("MyTestSuite");
 		Map<String, String> mapObj = new HashMap<String, String>();
@@ -48,21 +43,20 @@ public class BaseTest extends AbstractTestNGSpringContextTests implements Comman
 		suites.add(suite);
 		TestNG testngRunner = new TestNG();
 		testngRunner.setXmlSuites(suites);
-		testngRunner.setParallel("CLASSES");
-		testngRunner.setSuiteThreadPoolSize(2);
-		testngRunner.setThreadCount(2);
 		testngRunner.run();
+
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	@Parameters("browser")
 	public void setBrowser(@Optional("chrome") String browser) {
 		driver.browser = browser;
+
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void quitBrowser() {
 		driver.closeDriver();
-		
+
 	}
 }

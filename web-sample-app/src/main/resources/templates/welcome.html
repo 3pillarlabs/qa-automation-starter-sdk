@@ -1,27 +1,54 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Hello World Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 <link rel="stylesheet" type="text/css"
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
 <link rel="stylesheet" th:href="@{/css/main.css}"
 	href="../../css/main.css" />
+<title>Login</title>
 
+ <script>
+        	function validateLogin()
+			{
+        	    	
+    			if(document.login.uname.value == "" || document.login.pass.value == "")
+    			{
+      				alert("Either username or password field is blank");
+      				return false;
+    			}
+    	    }
+</script>
 </head>
 <body>
-	<div class="container">
-
-		<div class="starter-template">
-			<h1>Hello World Example</h1>
-			<h2>
-				<span th:text="'Message: ' + ${message}"></span>
-			</h2>
-		</div>
-
-	</div>
+	<form name="login" method="post" action="/login" onsubmit="return validateLogin()">
+            
+             <table border="1" style="width: 450px; margin: 0 auto; padding: 2px " >
+                <thead>
+                    <tr>
+                        <th colspan="2" bgcolor="green">Login to Sample App</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>User Name</b></td>
+                        <td><input type="text" name="uname" value="" id="username"/></td>
+                    </tr>
+                    <tr>
+                        <td><b>Password</b></td>
+                        <td><input type="password" name="pass" value="" id="password" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Login" id="submitButton"/></td>
+                        <td><input type="reset" value="Reset" id="resetButton" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Yet Not Registered!! <a href="/registeration">Register Here</a></td>
+                    </tr>
+                </tbody>
+            </table>
+           
+        </form>
 	
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>		

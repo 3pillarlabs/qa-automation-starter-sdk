@@ -1,6 +1,7 @@
 package com.tpg.quality.web.webelements;
 
 import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
