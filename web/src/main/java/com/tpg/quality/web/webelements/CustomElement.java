@@ -11,7 +11,7 @@ import org.openqa.selenium.internal.WrapsElement;
  * @author satnam.malhotra
  *
  */
-@ImplementedBy(CustomElementImpl.class)
+
 public interface CustomElement extends WebElement, WrapsElement, Locatable {
 
 	boolean elementWired();

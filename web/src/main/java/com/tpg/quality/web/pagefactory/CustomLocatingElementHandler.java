@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.springframework.stereotype.Component;
 
 import com.tpg.quality.web.annotation.CustomElementLocator;
 import com.tpg.quality.web.webelements.CustomElement;

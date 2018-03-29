@@ -5,6 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.tpg.quality.web.elementImpl.CustomElementImpl;
+
 /**
  * Sets the default implementing class for the annotated interface.
  */
