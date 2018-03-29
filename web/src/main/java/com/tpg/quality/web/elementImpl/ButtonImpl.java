@@ -1,4 +1,4 @@
-package com.tpg.quality.web.webelements;
+package com.tpg.quality.web.elementImpl;
 
 import org.openqa.selenium.ElementNotSelectableException;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -8,7 +8,11 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
+import com.tpg.quality.web.webelements.Button;
+
 public class ButtonImpl extends CustomElementImpl implements Button {
+	
+	
 
 	public ButtonImpl(WebElement element) {
 		super(element);

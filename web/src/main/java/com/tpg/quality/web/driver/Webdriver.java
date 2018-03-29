@@ -21,7 +21,7 @@ public class Webdriver {
 	private WebDriver driver;
 	public String browser;
 	public final static ThreadLocal<WebDriver> ThDriver = new ThreadLocal<WebDriver>();
-	public WebDriverWait wait;
+	public WebDriverWait driverWait;
 
 	public WebDriver getDriver() {
 		if (ThDriver.get() == null) {
@@ -35,12 +35,14 @@ public class Webdriver {
 			case "ie":
 				driver = ie_driver.getIEDriver();
 				break;
+			default:
+				break;
 			}
 			ThDriver.set(driver);
 			//ThDriver.get().manage().window().fullscreen();
 			ThDriver.get().manage().deleteAllCookies();
 			ThDriver.get().manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
-			wait = new WebDriverWait(ThDriver.get(), 60);
+			driverWait = new WebDriverWait(ThDriver.get(), 60);
 
 		}
 		return ThDriver.get();

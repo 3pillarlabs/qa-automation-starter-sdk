@@ -1,4 +1,4 @@
-package com.tpg.quality.web.webelements;
+package com.tpg.quality.web.elementImpl;
 
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
@@ -6,6 +6,8 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+
+import com.tpg.quality.web.webelements.TextField;
 
 public class TextFieldImpl extends CustomElementImpl implements TextField {
 

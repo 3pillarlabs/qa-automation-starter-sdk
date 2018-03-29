@@ -1,4 +1,4 @@
-package com.tpg.quality.web.webelements;
+package com.tpg.quality.web.elementImpl;
 
 import java.util.List;
 
@@ -12,10 +12,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.interactions.internal.Locatable;
 
+import com.tpg.quality.web.webelements.CustomElement;
+
 public class CustomElementImpl implements CustomElement {
 
 	private WebElement element;
-
+	
+	
 	public CustomElementImpl(WebElement element) {
 		this.element = element;
 	}
