@@ -54,11 +54,14 @@ public class CustomFieldDecorator implements FieldDecorator {
 			fieldType = CustomElement.class;
 		}
 
-		if (WebElement.class.isAssignableFrom(fieldType)) {
+		if (List.class.isAssignableFrom(fieldType)) {
+			Class<?> erasureClass = getErasureClass(field);
+			return proxyForListLocator(loader, erasureClass, locator);
+		}
+		else if (WebElement.class.isAssignableFrom(fieldType)) {
 			return proxyForLocator(loader, fieldType, locator);
-		} else if (List.class.isAssignableFrom(field.getType())) {
-			return proxyForListLocator(loader, fieldType, locator);
-		} else {
+		} 
+		else {
 			return null;
 		}
 	}
@@ -75,11 +78,16 @@ public class CustomFieldDecorator implements FieldDecorator {
 			return false;
 		}
 
-		Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
-
-		if (!WebElement.class.equals(listType)) {
+		Class<?> erasureClass = getErasureClass(field);
+		if (erasureClass == null) {
 			return false;
 		}
+
+		//Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
+
+		/*if (!WebElement.class.equals(listType)) {
+			return false;
+		}*/
 
 		if (field.getAnnotation(FindBy.class) == null && field.getAnnotation(FindBys.class) == null
 				&& field.getAnnotation(FindAll.class) == null) {
@@ -120,9 +128,22 @@ public class CustomFieldDecorator implements FieldDecorator {
 	 */
 	@SuppressWarnings("unchecked")
 	protected <T> List<T> proxyForListLocator(ClassLoader loader, Class<T> fieldType, CustomElementLocator locator) {
-		InvocationHandler handler = new CustomLocatingElementHandler(fieldType, locator);
+		InvocationHandler handler = new CustomLocatingElementListHandler(fieldType, locator);
 		List<T> proxy;
 		proxy = (List<T>) Proxy.newProxyInstance(loader, new Class[] { List.class }, handler);
 		return proxy;
+
+
+
+	}
+
+	private Class<?> getErasureClass(Field field) {
+		// Type erasure in Java isn't complete. Attempt to discover the generic
+		// interfaceType of the list.
+		Type genericType = field.getGenericType();
+		if (!(genericType instanceof ParameterizedType)) {
+			return null;
+		}
+		return (Class<?>) ((ParameterizedType) genericType).getActualTypeArguments()[0];
 	}
 }

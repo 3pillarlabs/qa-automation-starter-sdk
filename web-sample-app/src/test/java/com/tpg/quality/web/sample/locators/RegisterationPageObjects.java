@@ -1,5 +1,7 @@
 package com.tpg.quality.web.sample.locators;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
 
@@ -35,11 +37,11 @@ public class RegisterationPageObjects {
 	@FindBy(tag = "id", value = "password")
 	public TextField password;
 
-	@FindBy(tag = "id", value = "genderType")
+	@FindBy(tag = "id", value = "radio2")
 	public Button genderType;
 
-	@FindBy(tag = "id", value = "interest")
-	public Button interest;
+	@FindBy(tag = "name", value = "interest")
+	public List<Button> interest;
 
 	@FindBy(tag = "id", value = "courseType")
 	public Button courseType;

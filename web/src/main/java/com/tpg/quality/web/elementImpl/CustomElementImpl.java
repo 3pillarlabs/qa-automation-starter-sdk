@@ -17,10 +17,15 @@ import com.tpg.quality.web.webelements.CustomElement;
 public class CustomElementImpl implements CustomElement {
 
 	private WebElement element;
-	
-	
+	private List<WebElement> elements;
+
+
 	public CustomElementImpl(WebElement element) {
 		this.element = element;
+	}
+
+	public void setElements(List<WebElement> element) {
+		this.elements = element;
 	}
 
 	@Override

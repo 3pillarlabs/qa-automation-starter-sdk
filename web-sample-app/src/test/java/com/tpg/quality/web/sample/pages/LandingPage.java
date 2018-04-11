@@ -20,6 +20,7 @@ public class LandingPage {
 
 	public void openLandingPage(String url) {
 		driverobj.getDriver().get(url);
+
 		// logger.info("Opened the link " + url);
 		if (landingPageElements == null) {
 			landingPageElements = landingPageObj.initElements(driverobj.getDriver());
@@ -67,5 +68,10 @@ public class LandingPage {
 	}
 
 
+	public void invokePage(){
+		landingPageElements = null;
+		landingPageElements = landingPageObj.initElements(driverobj.getDriver());
 
+
+	}
 }

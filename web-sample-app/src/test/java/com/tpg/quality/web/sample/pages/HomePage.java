@@ -35,5 +35,11 @@ public class HomePage {
 		homePageElements.signOutButton.click();
 	}
 
+	public void invokePage(){
+		homePageElements = null;
+		homePageElements = homePageObj.initElements(driverobj.getDriver());
+
+	}
+
 }
 

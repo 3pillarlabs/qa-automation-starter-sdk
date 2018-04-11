@@ -2,15 +2,11 @@ package com.tpg.quality.web.sample.pages;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
-
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.locators.RegisterationPageObjects;
+import com.tpg.quality.web.webelements.Button;
 
 @Component
 public class RegisterationPage {
@@ -68,37 +64,22 @@ public class RegisterationPage {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
-		Select oSelect = new Select(registerationPageElements.genderType);
-		List <WebElement> elementCount = oSelect.getOptions();
-		int iSize = elementCount.size();
-		for(int i =0; i<iSize ; i++){
-			String sValue = elementCount.get(i).getText();
-			if(sValue.equals(gender)){
-				oSelect.selectByValue(sValue);
-				break;
-			}
-		}
+		registerationPageElements.genderType.selectByValue(gender);
 
-		// logger.info("Clicked login");
 	}
 
-	public void selectInterest(ArrayList<String> userInterest) {
-		ArrayList<String> defaultInterestList = null;
+	public void selectInterest(ArrayList<String> listOfInterest) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
-		Select oSelect = new Select(registerationPageElements.interest);
-		List <WebElement> elementCount = oSelect.getOptions();
-		int iSize = elementCount.size();
-		for(int i =0; i<iSize ; i++){
-			defaultInterestList.add(elementCount.get(i).getText());
-		}
-		for(int i=0; i<userInterest.size(); i++){
-			if(defaultInterestList.contains(userInterest.get(i))){
-				oSelect.selectByVisibleText(userInterest.get(i));
-
+		List<Button> elems = registerationPageElements.interest;
+		for(int i=0;i<elems.size();i++){
+			if(listOfInterest.contains(elems.get(i).getAttribute("id"))){
+				registerationPageElements.interest.get(i).click();
 			}
+
 		}
+
 		// logger.info("Clicked login");
 	}
 
@@ -106,14 +87,7 @@ public class RegisterationPage {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
-		Select oSelect = new Select(registerationPageElements.courseType);
-		List <WebElement> elementCount = oSelect.getOptions();
-		int iSize = elementCount.size();
-		for(int i =0; i<iSize ; i++){
-			if(elementCount.get(i).getText().equals(course)){
-				oSelect.selectByVisibleText(course);       		
-			}
-		}
+		registerationPageElements.courseType.selectByVisibleText(course);
 		// logger.info("Clicked login");
 	}
 
@@ -139,6 +113,13 @@ public class RegisterationPage {
 		}
 		registerationPageElements.loginLink.click();
 		// logger.info("Entered username");
+	}
+
+	public void invokePage(){
+		registerationPageElements = null;
+		registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
+
+
 	}
 
 }

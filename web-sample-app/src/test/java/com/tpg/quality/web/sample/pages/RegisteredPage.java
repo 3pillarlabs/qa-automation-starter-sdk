@@ -1,9 +1,7 @@
 package com.tpg.quality.web.sample.pages;
 
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Component;
-
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.locators.RegisteredPageObjects;
 
@@ -34,5 +32,12 @@ public class RegisteredPage {
 			//logger.info("User is registered successfully ");
 
 		}
+	}
+
+	public void invokePage(){
+		registeredPageElements = null;
+		registeredPageElements = registeredPageObj.initElements(driverobj.getDriver());
+
+
 	}
 }

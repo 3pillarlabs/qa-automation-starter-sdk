@@ -8,18 +8,21 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import com.tpg.quality.web.annotation.CustomElementLocator;
 import com.tpg.quality.web.webelements.CustomElement;
 
-public class CustomLocatingElementHandler implements InvocationHandler {
+
+
+
+public class CustomLocatingElementListHandler<T> implements InvocationHandler {
 	// Changed the locator type from ElementLocator to CustomElementLocator
 	CustomElementLocator locator;
 	Class<?> wrappingType;
 
-	public <T> CustomLocatingElementHandler(Class<T> fieldType, CustomElementLocator locator) {
+
+	public CustomLocatingElementListHandler(Class<T> fieldType, CustomElementLocator locator) {
 		this.locator = locator;
 		if (!CustomElement.class.isAssignableFrom(fieldType)) {
 			throw new RuntimeException("interface is not assignable to an Element");
@@ -27,13 +30,7 @@ public class CustomLocatingElementHandler implements InvocationHandler {
 		this.wrappingType = getWrapperClass(fieldType);
 	}
 
-	/**
-	 * Fetches the wrapper class from the annotation @ImplementedBy.
-	 *
-	 * @param innterface interface to process for annotations
-	 * @param <T> type of the wrapped class.
-	 * @return The custom WebElement implementation class
-	 */
+	@SuppressWarnings("rawtypes")
 	public static <T> Class<?> getWrapperClass(Class<T> innterface) {
 		List allClasses = getAllClasses("com.tpg.quality.web.elementImpl");
 		for(int i=0; i<allClasses.size() ; i++){
@@ -46,30 +43,6 @@ public class CustomLocatingElementHandler implements InvocationHandler {
 		}
 		throw new UnsupportedOperationException("Apply @ImplementedBy annotation to your Interface "
 				+ innterface.getCanonicalName() + " if you want to use it as a wrapper");
-	}
-
-	@Override
-	public Object invoke(Object proxy, Method method, Object[] objects) throws Throwable {
-		WebElement element;
-		try {
-			element = locator.findElement();
-		} catch (NoSuchElementException e) {
-			if ("toString".equals(method.getName())) {
-				return "Proxy element for: " + locator.toString();
-			}
-			throw e;
-		}
-		if ("getWrappedElement".equals(method.getName())) {
-			return element;
-		}
-		Constructor<?> cons = wrappingType.getConstructor(WebElement.class);
-		Object obj = cons.newInstance(element);
-		try {
-			return method.invoke(wrappingType.cast(obj), objects);
-		} catch (InvocationTargetException e) {
-			// Unwrap the underlying exception
-			throw e.getCause();
-		}
 	}
 
 	private static List getAllClasses(String pckgname) {
@@ -101,4 +74,32 @@ public class CustomLocatingElementHandler implements InvocationHandler {
 		}
 		return null;
 	}
+
+
+	public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
+
+
+		List<Object> wrappedList = new ArrayList<Object>();
+		try{
+			if(method.getName().equals("getWrappedElements")){
+				List<WebElement> elements = locator.findElements();
+				return elements;
+			}
+		}
+		catch(Exception e){
+		}
+
+		Constructor<?> cons = wrappingType.getConstructor(WebElement.class);
+		for (WebElement element : locator.findElements()) {
+			Object thing = cons.newInstance(element);
+			wrappedList.add(wrappingType.cast(thing));
+		}
+		try {
+			return method.invoke(wrappedList, objects);
+		} catch (InvocationTargetException e) {
+			// Unwrap the underlying exception
+			throw e.getCause();
+		}
+	}
+
 }

@@ -1,5 +1,9 @@
 package com.tpg.quality.web.driver;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -21,7 +25,11 @@ public class Webdriver {
 	private WebDriver driver;
 	public String browser;
 	public final static ThreadLocal<WebDriver> ThDriver = new ThreadLocal<WebDriver>();
-	public WebDriverWait driverWait;
+	private int implicitWait;
+	private int explicitWait;
+	public static WebDriverWait driverWait;
+
+
 
 	public WebDriver getDriver() {
 		if (ThDriver.get() == null) {
@@ -40,10 +48,11 @@ public class Webdriver {
 			}
 			ThDriver.set(driver);
 			//ThDriver.get().manage().window().fullscreen();
-			ThDriver.get().manage().deleteAllCookies();
-			ThDriver.get().manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
-			driverWait = new WebDriverWait(ThDriver.get(), 60);
-
+			Properties prop = readPropertiesFile();
+			implicitWait = Integer.parseInt(prop.getProperty("ImplicitWait"));
+			explicitWait = Integer.parseInt(prop.getProperty("ExplicitWait"));
+			ThDriver.get().manage().timeouts().implicitlyWait(implicitWait, TimeUnit.MILLISECONDS);
+			driverWait = new WebDriverWait(ThDriver.get(), explicitWait);
 		}
 		return ThDriver.get();
 	}
@@ -54,8 +63,32 @@ public class Webdriver {
 		driver.quit();
 		driver = null;
 		ThDriver.set(null);
+		/*try {
+			Runtime.getRuntime().exec("TASKKILL /F /IM chromedriver.exe /T");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+	}
+
+	public Properties readPropertiesFile(){
+
+		try{
+			String propertyFileLoc = System.getProperty("user.dir") + "\\src\\test\\resources\\ConfigProperties";
+			InputStream in = new FileInputStream(propertyFileLoc);
+			Properties prop = new Properties();
+			prop.load(in);
+			return prop;
+		}
+		catch (IOException e){
+			e.printStackTrace();
+			return null;
+		}
+
 
 	}
+
+
 
 
 

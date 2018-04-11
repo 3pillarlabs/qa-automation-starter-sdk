@@ -36,6 +36,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests  {
 		suite.setParameters(mapObj);
 		List<XmlClass> classes = new ArrayList<XmlClass>();
 		classes.add(new XmlClass("com.tpg.quality.web.sample.tests.LoginTest"));
+		classes.add(new XmlClass("com.tpg.quality.web.sample.tests.LoginTest2"));
 		XmlTest test = new XmlTest(suite);
 		test.setName("MyTests");
 		test.setXmlClasses(classes);

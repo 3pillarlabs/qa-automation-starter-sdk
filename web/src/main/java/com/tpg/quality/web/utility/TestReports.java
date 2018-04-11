@@ -28,7 +28,7 @@ public class TestReports  implements IResultListener, IReporter {
 	@Override
 	public void onTestStart(ITestResult result) {
 		//		log.info("Started execution of the test " + result.getMethod().getMethodName());
-	}
+	}	
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
