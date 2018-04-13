@@ -12,6 +12,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.0.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.0.0.RELEASE'
     compile group: 'org.webjars', name: 'bootstrap', version: '4.0.0'
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.0'
 }
 test {
     // explicitly include or exclude tests

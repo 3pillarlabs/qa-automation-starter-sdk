@@ -2,10 +2,15 @@ package com.tpg.quality.web.sample.pages;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Component;
+
+import com.relevantcodes.extentreports.LogStatus;
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.locators.RegisterationPageObjects;
+import com.tpg.quality.web.utility.ExtentTestManager;
 import com.tpg.quality.web.webelements.Button;
 
 @Component
@@ -18,52 +23,57 @@ public class RegisterationPage {
 	RegisterationPageObjects registerationPageElements = null;
 
 
-	// static Logger logger = Logger.getLogger(LandingPage.class);
 
 	public void enterFirstname(String firstName) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Enter value "+firstName+" as FirstName");
 		registerationPageElements.firstName.setText(firstName);
-		// logger.info("Clicked login");
+	
 	}
 
 	public void enterLastname(String lastname) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Enter value "+lastname+" as LastName");
 		registerationPageElements.lastName.setText(lastname);
-		// logger.info("Clicked login");
+		
 	}
 
 	public void enterEmail(String email) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Enter value "+email+" as Email");
 		registerationPageElements.email.setText(email);
-		// logger.info("Clicked login");
+	
 	}
 
 	public void enterUsername(String username) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Enter value "+username+" as UserName");
 		registerationPageElements.userName.setText(username);
-		// logger.info("Clicked login");
+	
 	}
 
 	public void enterPassword(String password) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Enter value "+password+" as Password");
 		registerationPageElements.password.setText(password);
-		// logger.info("Clicked login");
+		
 	}
 
 	public void selectGender(String gender) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Select "+gender+" as Gender");
 		registerationPageElements.genderType.selectByValue(gender);
 
 	}
@@ -72,6 +82,7 @@ public class RegisterationPage {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Check "+listOfInterest+" as User's interest area");
 		List<Button> elems = registerationPageElements.interest;
 		for(int i=0;i<elems.size();i++){
 			if(listOfInterest.contains(elems.get(i).getAttribute("id"))){
@@ -80,13 +91,13 @@ public class RegisterationPage {
 
 		}
 
-		// logger.info("Clicked login");
 	}
 
 	public void selectCourseType(String course) {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Select "+course+" as CourseType");
 		registerationPageElements.courseType.selectByVisibleText(course);
 		// logger.info("Clicked login");
 	}
@@ -95,24 +106,27 @@ public class RegisterationPage {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Going to click on Submit button");
 		registerationPageElements.submit.click();
-		// logger.info("Entered password");
+		
 	}
 
 	public void clickReset() {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Going to click on Reset button");
 		registerationPageElements.reset.click();
-		// logger.info("Entered password");
+		
 	}
 
 	public void clickLoginLink() {
 		if (registerationPageElements == null) {
 			registerationPageElements = registerationPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Going to click on Login button");
 		registerationPageElements.loginLink.click();
-		// logger.info("Entered username");
+		
 	}
 
 	public void invokePage(){

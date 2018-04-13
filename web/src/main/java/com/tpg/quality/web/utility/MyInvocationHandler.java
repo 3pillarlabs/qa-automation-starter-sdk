@@ -1,7 +1,11 @@
 package com.tpg.quality.web.utility;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +23,9 @@ public class MyInvocationHandler implements InvocationHandler {
 	Object obj;
 	public MyInvocationHandler(Object o) {
 		driver = (WebDriver)o;
-		waitForElem = new WebDriverWait(driver, 60);
+		Properties prop = readPropertiesFile();
+		int explicitWait = Integer.parseInt(prop.getProperty("ExplicitWait"));
+		waitForElem = new WebDriverWait(driver, explicitWait);
 
 	}
 
@@ -69,4 +75,19 @@ public class MyInvocationHandler implements InvocationHandler {
 		}
 	}
 
+	public Properties readPropertiesFile(){
+
+		try{
+			String propertyFileLoc = System.getProperty("user.dir") + "\\src\\test\\resources\\ConfigProperties";
+			InputStream in = new FileInputStream(propertyFileLoc);
+			Properties prop = new Properties();
+			prop.load(in);
+			return prop;
+		}
+		catch (IOException e){
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }

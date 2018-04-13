@@ -1,9 +1,13 @@
 package com.tpg.quality.web.sample.pages;
 
 import javax.inject.Inject;
+
 import org.springframework.stereotype.Component;
+
+import com.relevantcodes.extentreports.LogStatus;
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.locators.RegisteredPageObjects;
+import com.tpg.quality.web.utility.ExtentTestManager;
 
 @Component
 public class RegisteredPage {
@@ -13,15 +17,14 @@ public class RegisteredPage {
 	private RegisteredPageObjects registeredPageObj;
 
 	RegisteredPageObjects registeredPageElements = null;
-	// static Logger logger = Logger.getLogger(LandingPage.class);
 
 
 	public void clickLoginLink() {
 		if (registeredPageElements == null) {
 			registeredPageElements = registeredPageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Going to click on Login link ");
 		registeredPageElements.loginPagelink.click();
-		// logger.info("Entered username");
 	}
 
 	public void verifyRegisteration() {
@@ -29,7 +32,7 @@ public class RegisteredPage {
 			registeredPageElements = registeredPageObj.initElements(driverobj.getDriver());
 		}
 		if (registeredPageElements.successMsg.getText().contains("successful")){
-			//logger.info("User is registered successfully ");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is registered succesfully");
 
 		}
 	}

@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.tpg.quality.web.driver.Webdriver;
+import com.tpg.quality.web.utility.ExtentTestManager;
 import com.tpg.quality.web.webelements.Button;
 
 public class ButtonImpl extends CustomElementImpl implements Button {
@@ -27,9 +29,11 @@ public class ButtonImpl extends CustomElementImpl implements Button {
 
 	@Override
 	public void click() {
+		WebElement element = null;
 		try {
-			WebElement element = getWrappedElement();
+			element = getWrappedElement();
 			boolean elementClickable = false;
+
 			try{
 				waitForElem.until(ExpectedConditions.elementToBeClickable(element));
 				elementClickable = true;
@@ -40,20 +44,20 @@ public class ButtonImpl extends CustomElementImpl implements Button {
 			} 
 			if(element.isDisplayed() && element.isEnabled() && elementClickable){
 				super.click();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Clicked Element with value "+element.toString());
 			} 
 
 		} catch (Exception e ){
 			// add logger here Button is not clickable.
-			e.printStackTrace();
-			e.toString();
-			e.getMessage();
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to click on Element with value "+element.toString());
 		}
 	}
 
 	@Override
 	public void submit() {
+		WebElement element = null;
 		try {
-			WebElement element = getWrappedElement();
+			element = getWrappedElement();
 			boolean elementClickable = false;
 			try{
 				waitForElem.until(ExpectedConditions.elementToBeClickable(element));
@@ -65,19 +69,19 @@ public class ButtonImpl extends CustomElementImpl implements Button {
 			} 
 			if(element.isDisplayed() && element.isEnabled() && elementClickable){
 				super.submit();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Clicked Element with value "+element.toString());
 			} 
 
 		} catch (Exception e ){
 			// add logger here Button is not clickable.
-			e.printStackTrace();
-			e.toString();
-			e.getMessage();
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Button with value " +element.toString()+" is not clickable");
 		}
 	}
 	@Override
 	public boolean isSelected() {
+		WebElement element = null;
 		try {
-			WebElement element = getWrappedElement();
+			element = getWrappedElement();
 			if (element.isDisplayed()) {
 				return element.isSelected();
 			} else {

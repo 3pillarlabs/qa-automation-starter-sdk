@@ -47,7 +47,7 @@ public class Webdriver {
 				break;
 			}
 			ThDriver.set(driver);
-			//ThDriver.get().manage().window().fullscreen();
+			ThDriver.get().manage().window().fullscreen();
 			Properties prop = readPropertiesFile();
 			implicitWait = Integer.parseInt(prop.getProperty("ImplicitWait"));
 			explicitWait = Integer.parseInt(prop.getProperty("ExplicitWait"));
@@ -63,12 +63,7 @@ public class Webdriver {
 		driver.quit();
 		driver = null;
 		ThDriver.set(null);
-		/*try {
-			Runtime.getRuntime().exec("TASKKILL /F /IM chromedriver.exe /T");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+
 	}
 
 	public Properties readPropertiesFile(){

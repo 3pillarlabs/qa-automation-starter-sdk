@@ -4,7 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.tpg.quality.web.driver.Webdriver;
+import com.tpg.quality.web.utility.ExtentTestManager;
 import com.tpg.quality.web.webelements.TextField;
 
 public class TextFieldImpl extends CustomElementImpl implements TextField {
@@ -26,11 +28,12 @@ public class TextFieldImpl extends CustomElementImpl implements TextField {
 		}
 		catch (Exception e) {
 			elementVisible = false;
-			e.toString();
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Element with value "+element.toString()+" is not visible");
 		} 
 
 		if(element.isEnabled() && elementVisible){
 			super.sendKeys(text);
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Entered text "+text+ "into field "+element.toString());
 		} 
 	}
 

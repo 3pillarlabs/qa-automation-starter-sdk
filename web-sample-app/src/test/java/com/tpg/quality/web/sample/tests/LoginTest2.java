@@ -6,14 +6,17 @@ import java.util.Arrays;
 import javax.inject.Inject;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.testng.annotations.Test;
 
 import com.tpg.quality.web.sample.pages.HomePage;
 import com.tpg.quality.web.sample.pages.LandingPage;
 import com.tpg.quality.web.sample.pages.RegisterationPage;
 import com.tpg.quality.web.sample.pages.RegisteredPage;
+import com.tpg.quality.web.utility.ExtentTestManager;
 
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
 public class LoginTest2 extends BaseTest {
 	@Inject
 	private LandingPage landingPageobj;
@@ -28,6 +31,7 @@ public class LoginTest2 extends BaseTest {
 
 	@Test(description = "Register and login with same user ", priority=2)
 	public void registerAndLoginUser() {
+		ExtentTestManager.getTest().setDescription("Register a user and login with same user");
 		invokePages();
 		landingPageobj.invokePage();
 		landingPageobj.openLandingPage("http://localhost:8080/welcome");

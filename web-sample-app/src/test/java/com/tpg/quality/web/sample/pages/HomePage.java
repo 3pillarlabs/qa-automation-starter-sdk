@@ -4,8 +4,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.tpg.quality.web.driver.Webdriver;
 import com.tpg.quality.web.sample.locators.HomePageObjects;
+import com.tpg.quality.web.utility.ExtentTestManager;
 
 @Component
 public class HomePage {
@@ -32,6 +34,7 @@ public class HomePage {
 		if (homePageElements == null) {
 			homePageElements = homePageObj.initElements(driverobj.getDriver());
 		}
+		ExtentTestManager.getTest().log(LogStatus.INFO, "Going to click on SignOut button");
 		homePageElements.signOutButton.click();
 	}
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.internal.WrapsElement;
 
 /**
  * Custom element interface extending other interfaces (WebElement,
- * WrapsElement, Locatable)
+ * WrapsElement, Locatable)	
  * 
  * @author satnam.malhotra
  *
