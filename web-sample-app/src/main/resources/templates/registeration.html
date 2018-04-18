@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}"
+	href="../../css/main.css" />
+
+<script>
+        function validateForm()
+		{
+        	        	
+    		if(document.register.fname.value == "" || document.register.lname.value == "" ||
+    				document.register.email.value == "" || document.register.uname.value == "" || document.register.pass.value == "")
+    		{
+      			alert("Please fill in all required fields");
+      			return false;
+    		}
+    		
+    		
+    		
+	}
+</script>
+
+</head>
+<body>
+	
+        <form name="register" method="post" action="/registerationSuccess" onsubmit="return validateForm()">
+            
+            <table border="1" style="width: 450px; margin: 0 auto;  " >
+                <thead>
+                    <tr>
+                        <th colspan="2" bgcolor="green">Enter Information Here</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>First Name</b></td>
+                        <td><input type="text" name="fname" id="firstname" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>Last Name</b></td>
+                        <td><input type="text" name="lname" id="lastname" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td><input type="text" name="email" id="emailid" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>User Name</b></td>
+                        <td><input type="text" name="uname" id="username" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>Password</b></td>
+                        <td><input type="password" name="pass" id="password" value="" /></td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    		<label><b>Gender</b></label> 
+                    		</td>
+                    		<td id="genderType">           
+          					<input 	type = "radio"
+                 					name = "radGender"
+                 					id = "radio1"
+                 					value = "female"
+                 					checked = "checked" />
+          							<label for = "radio1">female</label>
+          					<input 	type = "radio"
+                 					name = "radGender"
+                 					id = "radio2"
+                 					value = "male" />
+          							<label for = "radio2">male</label>
+          							
+          				</td>
+          			</tr>	
+          			<tr>
+          			<td><label><b>Choose Your Interests</b> </label></td>
+          			<td id="interest">
+             			<input type = "checkbox" id = "MachineLearning" name = "interest" /> <label for = "MachineLearning">MachineLearning</label><br>
+             			<input type = "checkbox" id = "ERP"  name = "interest" /> <label for = "ERP">ERP</label><br>
+             			<input type = "checkbox" id = "SAP"  name = "interest" /> <label for = "SAP">SAP</label><br>
+             			<input type = "checkbox" id = "BigData"  name = "interest" /> <label for = "BigData">BigData</label><br>
+             			<input type = "checkbox" id = "QAAutomation"  name = "interest" /> <label for = "QAAutomation">QAAutomation</label><br>					
+                    </td>
+                    </tr>  
+                    <tr>
+                    <td><label><b>Course Type</b></label></td>
+                    <td>
+                    <select name ="Course Type" id="courseType">
+                    	<option>Full Time</option>
+                    	<option>Part Time</option>
+                    	<option>Professional</option>
+                    	
+                    </select>
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><input type="submit" value="Submit" id="submit" /></td>
+                        <td><input type="reset" value="Reset" id="reset"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Already registered!! <a href="/welcome">Login Here</a></td>
+                    </tr>
+                </tbody>
+            </table>
+           
+        </form>
+        
+
+	
+	<script type="text/javascript"
+		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
+</body>
+</html>

@@ -6,4 +6,5 @@ dependencies {
     // Common Code Dependency
     compile project(':common')
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.11.0'
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.0'
 }
