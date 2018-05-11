@@ -1,5 +1,5 @@
 # QA Automation Starter SDK
-[![Build Status](https://travis-ci.org/3pillarlabs/qa-automation-starter-sdk.svg?branch=develop)](https://travis-ci.org/3pillarlabs/qa-automation-starter-sdk) [![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=3pillar-engineering-github&metric=alert_status)](https://sonarcloud.io/api/project_badges/measure?project=3pillar-engineering-github&metric=alert_status)
+[![Build Status](https://travis-ci.org/3pillarlabs/qa-automation-starter-sdk.svg?branch=develop)](https://travis-ci.org/3pillarlabs/qa-automation-starter-sdk) [![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=3pillar-engineering-github&metric=alert_status)](https://sonarcloud.io/api/project_badges/measure?project=3pillar-engineering-github)
 
 This SDK provides common libraries and utilities for a test automation framework across web, APIs and mobile. There are two ways to use this SDK:
 * Clone the SDK and add application specific test data, tests and page objects.
